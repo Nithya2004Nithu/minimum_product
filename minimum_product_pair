@@ -1,0 +1,37 @@
+
+import java.util.*;
+public class Main
+{
+    public static int minimumPro(int[] arr,int sum){
+        int n=arr.length;
+        if(arr.length<2){
+            return 0;
+        }
+        int mul=0;
+        Arrays.sort(arr);
+        HashSet<Integer> set=new HashSet<>();
+        for(int i=0;i<n;i++){
+            set.add(arr[i]);
+            ArrayList<Integer> list=new ArrayList<>(set);
+            if(list.size()>=2){
+            int res=list.get(0)+list.get(1);
+            if(res<sum){
+                mul=list.get(0)*list.get(1);
+                return mul;
+            }    
+        }
+        }
+        return -1;
+    }
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int n=sc.nextInt();
+	    int[] arr=new int[n];
+	    for(int i=0;i<n;i++){
+	        arr[i]=sc.nextInt();
+	    }
+	    int sum=sc.nextInt();
+	    int res=minimumPro(arr,sum);
+		System.out.println(res);
+	}
+}
